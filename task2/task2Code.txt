@@ -1,0 +1,13 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?cityName ?population
+WHERE {
+  ?city a dbo:City ;
+        rdfs:label ?cityName ;
+        dbo:country <http://dbpedia.org/resource/Ukraine> ;
+        dbo:populationTotal ?population .
+  FILTER (LANG(?cityName) = "uk") 
+}
+ORDER BY DESC(?population)
+LIMIT 1
